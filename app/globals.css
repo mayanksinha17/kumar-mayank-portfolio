@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html,
+body {
+  background: #05070e;
+  color: #e6e9f2;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.35);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #05070e;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  border-radius: 8px;
+}
+
+.glass {
+  background: rgba(13, 18, 32, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #60a5fa, #a78bfa 55%, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-shell {
+    padding: 7rem 2rem;
+  }
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ==========================================================================
+   PRINT STYLESHEET
+   Framer Motion's `RevealOnScroll` leaves sections at opacity:0 until they
+   scroll into the viewport — which never happens for most sections during
+   Ctrl+P / Save-as-PDF, producing blank pages. This block forces every
+   element to its final, visible state for print only. It never touches the
+   normal on-screen appearance.
+   ========================================================================== */
+@media print {
+  /* Kill every animation/transition/transform and force full opacity,
+     overriding Framer Motion's inline styles (an !important rule in an
+     author stylesheet beats a non-!important inline style). */
+  * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Let every section expand to its natural height instead of clipping
+     to the viewport (Hero uses min-h-[100svh] + overflow-hidden, which
+     is only meaningful on screen). */
+  section,
+  main,
+  div {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  /* Three.js / canvas background effects and any decorative blur orbs
+     are pure screen decoration — drop them so they don't render as solid
+     black rectangles on paper. */
+  canvas,
+  .blur-3xl,
+  .blur-2xl {
+    display: none !important;
+  }
+
+  /* Glass panels: backdrop-filter does nothing on paper and can leave a
+     panel looking like a blank dark box. Swap to a plain light card. */
+  .glass {
+    background: #f4f5f8 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid #d0d3da !important;
+    box-shadow: none !important;
+  }
+
+  /* Gradient text relies on background-clip, which often prints blank.
+     Force a solid, readable color instead. */
+  .text-gradient {
+    -webkit-text-fill-color: #1d2433 !important;
+    background: none !important;
+    color: #1d2433 !important;
+  }
+
+  /* Any text color utilities that were tuned for a dark background read
+     as near-invisible on white paper — repaint body copy dark. */
+  body,
+  p,
+  span,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #111111 !important;
+  }
+
+  a {
+    color: #1d4ed8 !important;
+    text-decoration: underline;
+  }
+
+  .shadow-glow,
+  .shadow-glow-violet,
+  .shadow-panel {
+    box-shadow: none !important;
+  }
+
+  nav {
+    display: none !important;
+  }
+
+  section {
+    padding: 1.25rem 0 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .section-shell {
+    padding: 1.25rem 0.5rem !important;
+    max-width: 100% !important;
+  }
+}
