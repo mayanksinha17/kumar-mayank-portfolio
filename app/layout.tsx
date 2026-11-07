@@ -21,37 +21,45 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://kumarmayank.dev";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://kumar-mayank-portfolio.vercel.app");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Kumar Mayank | Data Science Student & MERN Stack Developer",
+  title: "Kumar Mayank | Full-Stack Developer & Backend Enthusiast",
   description:
-    "Portfolio of Kumar Mayank, a Data Science student and MERN Stack Developer specializing in Full Stack Development and exploring AI, Data Science, Backend Engineering, and DevOps.",
+    "Portfolio of Kumar Mayank — Full-Stack Developer, Backend Enthusiast, Open-Source Contributor, and B.Tech Data Science Engineering student at DSCE Bengaluru.",
   keywords: [
     "Kumar Mayank",
-    "MERN Stack Developer",
-    "Full Stack Developer",
-    "Data Science Student",
+    "Full-Stack Developer",
+    "Backend Developer",
+    "Open-Source Contributor",
+    "DevOps Enthusiast",
+    "Data Science Engineering",
+    "DSCE Bengaluru",
     "SDE Internship",
-    "React Developer",
-    "Node.js Developer",
+    "Node.js",
+    "React",
+    "FastAPI",
+    "Docker",
+    "FleetMind",
   ],
   authors: [{ name: site.name }],
   openGraph: {
-    title: "Kumar Mayank | Data Science Student & MERN Stack Developer",
+    title: "Kumar Mayank | Full-Stack Developer & Backend Enthusiast",
     description:
-      "MERN Stack Developer and Data Science student building modern, practical web applications while exploring AI and DevOps.",
+      "Building scalable full-stack applications, backend systems, and data-driven solutions. Open-source contributor and DevOps enthusiast.",
     url: siteUrl,
-    siteName: "Kumar Mayank — Portfolio",
+    siteName: "Kumar Mayank — Portfolio V2",
     type: "profile",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kumar Mayank | Data Science Student & MERN Stack Developer",
+    title: "Kumar Mayank | Full-Stack Developer & Backend Enthusiast",
     description:
-      "MERN Stack Developer and Data Science student building modern, practical web applications while exploring AI and DevOps.",
+      "Building scalable full-stack applications, backend systems, and data-driven solutions. Open-source contributor and DevOps enthusiast.",
   },
   alternates: {
     canonical: siteUrl,
@@ -66,9 +74,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Kumar Mayank",
-  jobTitle: "MERN Stack Developer",
+  jobTitle: "Full-Stack Developer & Backend Enthusiast",
   description:
-    "Data Science student and MERN Stack Developer building full-stack web applications.",
+    "B.Tech Data Science Engineering student at DSCE Bengaluru. Full-Stack Developer, Backend Enthusiast, and Open-Source Contributor.",
   url: siteUrl,
   sameAs: [site.contact.github, site.contact.linkedin],
 };

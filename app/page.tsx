@@ -3,11 +3,11 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Education from "@/components/Education";
-import LearningJourney from "@/components/LearningJourney";
-import DevOps from "@/components/DevOps";
 import Projects from "@/components/Projects";
+import DevOps from "@/components/DevOps";
 import OpenSource from "@/components/OpenSource";
 import GitHubPanel from "@/components/GitHubPanel";
+import LearningJourney from "@/components/LearningJourney";
 import Milestones from "@/components/Milestones";
 import OpenToAndCertifications from "@/components/OpenToAndCertifications";
 import Resume from "@/components/Resume";
@@ -22,11 +22,11 @@ export default function Home() {
       <About />
       <Skills />
       <Education />
-      <LearningJourney />
-      <DevOps />
       <Projects />
+      <DevOps />
       <OpenSource />
       <GitHubPanel />
+      <LearningJourney />
       <Milestones />
       <OpenToAndCertifications />
       <Resume />

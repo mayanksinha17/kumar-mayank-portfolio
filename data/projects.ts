@@ -1,3 +1,11 @@
+export type ProjectCategory =
+  | "Full Stack"
+  | "Frontend"
+  | "Backend"
+  | "DevOps"
+  | "AI/ML"
+  | "Data Science";
+
 export type Project = {
   title: string;
   description: string;
@@ -6,6 +14,9 @@ export type Project = {
   github: string;
   liveDemo: string;
   category: "Full Stack" | "Frontend" | "Backend" | "AI/ML" | "Data Science";
+  categories?: ProjectCategory[];
+  highlights?: string[];
+  role?: string;
 };
 
 /**
@@ -15,31 +26,76 @@ export type Project = {
  */
 export const projects: Project[] = [
   {
-    title: "StayLux",
+    title: "FleetMind",
     description:
-      "A full-stack hotel booking and management platform with an admin dashboard for revenue and occupancy management. Containerized using Docker for consistent development and deployment.",
+      "Full-stack fleet monitoring, shipment tracking, and route intelligence platform with real-time telemetry and rule-based fleet intelligence.",
     technologies: [
       "React",
-      "FastAPI",
-      "SQLAlchemy",
-      "PostgreSQL",
-      "JWT",
-      "Docker",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Socket.IO",
+      "Leaflet",
     ],
     features: [
-      "Hotel booking and management",
-      "Admin dashboard with revenue & occupancy analytics",
-      "JWT-based authentication",
-      "Containerized application using Docker",
+      "Real-time GPS telemetry",
+      "Truck status monitoring",
+      "Shipment and trip management",
+      "Socket.IO integration",
+      "Route optimization",
+      "ETA estimation",
+      "Fuel and cost calculations",
+      "Rule-based fleet intelligence",
     ],
-    github: "https://github.com/mayanksinha17/StayLux",
+    github: "https://github.com/mayanksinha17/FleetMind",
     liveDemo: "",
     category: "Full Stack",
+    categories: ["Full Stack", "Backend", "AI/ML"],
+    highlights: [
+      "Real-Time Telemetry",
+      "Socket.IO Integration",
+      "Route Optimization",
+      "Fleet Intelligence",
+    ],
+    role: "Full-Stack Developer",
+  },
+  {
+    title: "Personal Task Automator",
+    description:
+      "AI-assisted task management and productivity platform with automated task prioritization, a live statistics dashboard, and activity history tracking.",
+    technologies: [
+      "Node.js",
+      "Express.js",
+      "JavaScript",
+      "SQLite",
+      "HTML5",
+      "CSS3",
+      "REST API",
+    ],
+    features: [
+      "CRUD APIs",
+      "Task prioritization",
+      "Automated task management",
+      "Task statistics",
+      "Activity history",
+      "SQLite persistence",
+    ],
+    github: "https://github.com/mayanksinha17/Personal-Task-Automator",
+    liveDemo: "https://personal-task-automator.vercel.app",
+    category: "Full Stack",
+    categories: ["Full Stack", "Backend", "AI/ML"],
+    highlights: [
+      "AI Task Prioritization",
+      "SQLite Transactions",
+      "Activity History",
+      "REST APIs",
+    ],
+    role: "Full-Stack Developer",
   },
   {
     title: "QR-Based Attendance System",
     description:
-      "A role-based attendance management system using QR codes for fast, reliable check-ins with OTP verification and JWT-secured endpoints.",
+      "Secure role-based attendance platform using dynamic QR verification, OTP security, and JWT-secured REST APIs for institutions and events.",
     technologies: [
       "Node.js",
       "Express.js",
@@ -49,46 +105,31 @@ export const projects: Project[] = [
       "bcrypt",
     ],
     features: [
-      "QR-based attendance marking",
-      "Role-based workflows (admin, teacher, student)",
-      "OTP verification for secure access",
-      "JWT-secured REST API endpoints",
+      "QR verification",
+      "JWT authentication",
+      "bcrypt password security",
+      "Student, employee and administrator roles",
+      "MongoDB-backed REST APIs",
     ],
     github: "https://github.com/mayanksinha17/QR-Based-Attendance-System",
     liveDemo: "",
     category: "Full Stack",
-  },
-  {
-    title: "Personal Task Automator",
-    description:
-      "A full-stack task management app with AI-assisted task prioritization, a live statistics dashboard, and a complete history log of every task action.",
-    technologies: [
-      "Express.js",
-      "Node.js",
-      "SQLite",
-      "Vanilla JavaScript",
-      "HTML5",
-      "CSS3",
-      "REST API",
+    categories: ["Full Stack", "Backend"],
+    highlights: [
+      "QR Verification",
+      "JWT & bcrypt",
+      "Role-Based Access Control",
+      "MongoDB REST APIs",
     ],
-    features: [
-      "Create, update, complete, and delete tasks",
-      "AI-assisted task prioritization",
-      "Real-time statistics dashboard",
-      "Full audit trail via a task history log",
-      "Persistent SQLite storage with prepared statements",
-    ],
-    github: "https://github.com/mayanksinha17/Personal-Task-Automator",
-    liveDemo: "https://personal-task-automator.vercel.app",
-    category: "Full Stack",
+    role: "Backend & Full-Stack Developer",
   },
 ];
 
 export const categories = [
   "All",
   "Full Stack",
-  "Frontend",
   "Backend",
+  "DevOps",
   "AI/ML",
   "Data Science",
 ] as const;

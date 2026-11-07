@@ -13,7 +13,7 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -30,7 +30,7 @@ export default function Navbar() {
           }
         });
       },
-      { rootMargin: "-40% 0px -50% 0px" }
+      { rootMargin: "-25% 0px -45% 0px", threshold: 0.1 }
     );
 
     sections.forEach((s) => observer.observe(s));
@@ -58,12 +58,12 @@ export default function Navbar() {
           </span>
         </a>
 
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden lg:flex items-center gap-1">
           {nav.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors focus-ring ${
+                className={`relative px-2.5 py-1.5 text-xs xl:text-sm font-medium rounded-lg transition-colors focus-ring ${
                   active === item.href
                     ? "text-white"
                     : "text-slate-400 hover:text-white"
@@ -73,7 +73,7 @@ export default function Navbar() {
                 {active === item.href && (
                   <motion.span
                     layoutId="nav-underline"
-                    className="absolute left-3 right-3 -bottom-0.5 h-px bg-gradient-to-r from-electric to-cyan"
+                    className="absolute left-2.5 right-2.5 -bottom-0.5 h-px bg-gradient-to-r from-electric to-cyan"
                   />
                 )}
               </a>
@@ -83,16 +83,16 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="/Mayank_resume_Updated.pdf"
+            href={site.resumeUrl || "/resume.pdf"}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-sm font-medium text-slate-300 hover:text-white transition-colors focus-ring rounded px-2 py-1"
+            className="flex items-center gap-1.5 text-xs xl:text-sm font-medium text-slate-300 hover:text-white transition-colors focus-ring rounded px-2.5 py-1.5 glass"
           >
-            <FileDown size={15} /> Resume
+            <FileDown size={14} /> Resume
           </a>
           <a
             href="#contact"
-            className="text-sm font-semibold px-4 py-2 rounded-lg bg-gradient-to-r from-electric to-violet text-white shadow-glow hover:brightness-110 transition focus-ring"
+            className="text-xs xl:text-sm font-semibold px-3.5 py-2 rounded-lg bg-gradient-to-r from-electric to-violet text-white shadow-glow hover:brightness-110 transition focus-ring"
           >
             Let&rsquo;s Connect
           </a>
@@ -100,7 +100,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden text-slate-200 focus-ring rounded p-2"
+          className="lg:hidden text-slate-200 focus-ring rounded p-2"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
@@ -115,33 +115,41 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden glass border-t border-border overflow-hidden"
+            className="lg:hidden glass border-t border-border overflow-hidden"
           >
-            <ul className="section-shell !py-6 flex flex-col gap-1">
+            <ul className="section-shell !py-5 flex flex-col gap-1">
               {nav.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="block px-2 py-3 text-base text-slate-200 hover:text-white border-b border-white/5 focus-ring rounded"
+                    onClick={() => {
+                      setActive(item.href);
+                      setOpen(false);
+                    }}
+                    className={`block px-3 py-2.5 text-sm rounded-lg transition-colors ${
+                      active === item.href
+                        ? "text-cyan bg-white/[0.05] font-semibold"
+                        : "text-slate-300 hover:text-white"
+                    }`}
                   >
                     {item.label}
                   </a>
                 </li>
               ))}
-              <li className="pt-3 flex gap-3">
+              <li className="pt-3 flex gap-3 border-t border-white/10 mt-2">
                 <a
-                  href="/Mayank_resume_Updated.pdf"
+                  href={site.resumeUrl || "/resume.pdf"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 text-center text-sm font-medium px-4 py-2.5 rounded-lg glass text-slate-200"
+                  onClick={() => setOpen(false)}
+                  className="flex-1 text-center text-xs sm:text-sm font-medium px-4 py-2.5 rounded-lg glass text-slate-200"
                 >
-                  Resume
+                  View Resume
                 </a>
                 <a
                   href="#contact"
                   onClick={() => setOpen(false)}
-                  className="flex-1 text-center text-sm font-semibold px-4 py-2.5 rounded-lg bg-gradient-to-r from-electric to-violet text-white"
+                  className="flex-1 text-center text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-lg bg-gradient-to-r from-electric to-violet text-white"
                 >
                   Let&rsquo;s Connect
                 </a>

@@ -2,13 +2,17 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { nav, site } from "@/data/site";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-white/10 mt-10">
+    <footer className="border-t border-white/10 mt-14 bg-surface/50">
       <div className="section-shell !py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="text-center md:text-left">
-          <p className="font-display font-bold text-white">{site.name}</p>
+          <p className="font-display font-bold text-white text-base">
+            {site.name}
+          </p>
           <p className="text-xs text-muted mt-1">
-            Data Science Student • Full-Stack Developer
+            Full-Stack Developer • Backend Enthusiast • DevOps & Open Source
           </p>
         </div>
 
@@ -37,16 +41,19 @@ export default function Footer() {
               target={href.startsWith("http") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
               aria-label={label}
-              className="p-2 rounded-lg glass text-slate-400 hover:text-cyan transition-colors focus-ring"
+              className="p-2 rounded-lg glass text-slate-400 hover:text-cyan hover:-translate-y-0.5 transition-all focus-ring"
             >
               <Icon size={16} />
             </a>
           ))}
         </div>
       </div>
-      <p className="text-center text-[11px] text-slate-600 pb-8">
-        © 2026 Kumar Mayank. All rights reserved.
-      </p>
+
+      <div className="border-t border-white/5 py-6">
+        <p className="text-center text-[11px] text-slate-500">
+          © {currentYear} {site.name}. All rights reserved. Built with Next.js, TypeScript, and Tailwind CSS.
+        </p>
+      </div>
     </footer>
   );
 }

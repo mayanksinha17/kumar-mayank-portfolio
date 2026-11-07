@@ -93,7 +93,7 @@ export default function Hero() {
               View My Projects
             </a>
             <a
-              href="/Mayank_resume_Updated.pdf"
+              href={site.resumeUrl || "/resume.pdf"}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-3 rounded-xl glass text-sm font-semibold text-slate-100 hover:border-electric/40 transition focus-ring"
@@ -101,8 +101,8 @@ export default function Hero() {
               <Eye size={16} /> View Resume
             </a>
             <a
-              href="/Mayank_resume_Updated.pdf"
-              download
+              href={site.resumeUrl || "/resume.pdf"}
+              download="Kumar_Mayank_Resume.pdf"
               className="flex items-center gap-2 px-5 py-3 rounded-xl border border-border text-sm font-semibold text-slate-300 hover:text-white hover:border-electric/40 transition focus-ring"
             >
               <FileDown size={16} /> Download Resume
@@ -147,7 +147,7 @@ export default function Hero() {
               <div className="w-full h-full rounded-full overflow-hidden">
                 <Image
                   src="/profile.png"
-                  alt="Kumar Mayank - Data Science Student and Full-Stack Developer"
+                  alt={`${site.name} - ${site.role}`}
                   width={320}
                   height={320}
                   priority
@@ -156,10 +156,10 @@ export default function Hero() {
               </div>
             </div>
             <div className="absolute -bottom-3 -right-2 glass rounded-xl px-3 py-2 text-xs font-mono text-slate-200 shadow-panel animate-float-slow">
-              Full Stack Dev
+              Backend & DevOps
             </div>
             <div className="absolute -top-2 -left-4 glass rounded-xl px-3 py-2 text-xs font-mono text-slate-200 shadow-panel animate-float">
-              Data Science
+              Full-Stack & Open Source
             </div>
           </div>
         </motion.div>
